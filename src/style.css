@@ -50,3 +50,9 @@ hr {
   width: 150px;
   text-align: center;
 }
+.footer {
+  text-align: left;
+  font-size: 12px;
+  font-family: monospace;
+  padding-left: 25px;
+}
