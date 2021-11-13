@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="src/style.css" />
+
+    <title>Weather Forecast</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Welcome!</h1>
+      <form class="d-flex search" id="search-form">
+        <input
+          class="form-control me-2 search"
+          id="location-input"
+          type="search"
+          placeholder="Search location"
+          aria-label="Search"
+        />
+        <button class="btn btn-outline-primary" id="search-button" type="submit">🔍</button>
+        <button type="button" class="btn btn-outline-primary current-location" id="current-location">
+          Current location
+        </button>
+      </form>
+
+      <hr />
+
+      <div class="card today">
+        <div class="card-body">
+          <h4 class="card-title">📍 <span id="title-country">Kiel, Germany</span></h4>
+          <br />
+          <h5 class="card-subtitle mb-2 text-muted">Today ⛈</h5>
+          <p class="card-text">
+            <span class="temperature" id="temperature"></span>
+            <span class="units"><a href="#" id="celsius">°C</a>|<a href="#" id="fahrenheit">°F</a></span>
+          </p>
+          <p class="day-date">
+            <strong><span id="day"></span></strong><br /><span id="date"></span>
+            <br />
+            <span id="time"></span>
+          </p>
+        </div>
+      </div>
+
+      <div class="row align-items-start">
+        <div class="col-2 forecast">
+          Thu ⛅️
+          <div class="forecast-temp">7°/15°</div>
+        </div>
+        <div class="col-2 forecast">
+          Fri 🌤
+          <div class="forecast-temp">10°/14°</div>
+        </div>
+        <div class="col-2 forecast">
+          Sat ⛅️
+          <div class="forecast-temp">10°/15°</div>
+        </div>
+        <div class="col-2 forecast">
+          Sun 🌧
+          <div class="forecast-temp">9°/14°</div>
+        </div>
+        <div class="col-2 forecast">
+          Mon 🌧
+          <div class="forecast-temp">7°/11°</div>
+        </div>
+        <div class="col-2 forecast">
+          Tue ⛅️
+          <div class="forecast-temp">8°/11°</div>
+        </div>
+      </div>
+    </div>
+    <script src="src/index.js"></script>
+  </body>
+</html>

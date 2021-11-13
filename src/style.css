@@ -1,0 +1,52 @@
+body {
+  font-family: "Lucida Sans", "Lucida Sans Regular", "Lucida Grande", "Lucida Sans Unicode", Geneva, Verdana, sans-serif;
+  text-align: center;
+  margin-top: 20px;
+}
+hr {
+  border: none;
+  size: 10px;
+}
+.container {
+  max-width: 800px;
+}
+.navbar {
+  display: block;
+  margin: 0 auto;
+  background-color: transparent;
+}
+.search {
+  max-width: 400px;
+  margin: 0 auto;
+}
+.today {
+  margin: 0 auto;
+  border-color: transparent;
+  text-align: left;
+  max-width: fit-content;
+}
+.card-body {
+  padding: 0;
+}
+.forecast {
+  font-size: 18px;
+}
+.btn {
+  font-size: 16px;
+}
+
+.temperature {
+  font-size: 30px;
+}
+.units {
+  position: relative;
+  top: -10px;
+}
+.current-location {
+  font-size: 12px;
+  margin-left: 10px;
+  block-size: fit-content;
+  max-height: 45px;
+  width: 150px;
+  text-align: center;
+}
