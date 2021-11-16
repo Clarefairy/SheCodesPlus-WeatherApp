@@ -42,17 +42,20 @@ hr {
   position: relative;
   top: -10px;
 }
-.current-location {
-  font-size: 12px;
-  margin-left: 10px;
-  block-size: fit-content;
-  max-height: 45px;
-  width: 150px;
-  text-align: center;
-}
+
 .footer {
   text-align: left;
   font-size: 12px;
   font-family: monospace;
   padding-left: 25px;
+}
+
+.units .active {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+
+.units .active:hover {
+  text-decoration: none;
 }

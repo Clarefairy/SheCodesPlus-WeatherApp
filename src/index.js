@@ -62,73 +62,42 @@ function submitCountry(country) {
   searchCity(city);
 }
 
+//Get temperature at search location
+function getSearchTemp(response) {
+  let temperatureElement = document.querySelector("#temperature");
+  celsiusTemp = response.data.main.temp;
+  clickCelsius.classList.add("active");
+  clickFahrenheit.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+  let cityUpdate = document.querySelector("#title-country");
+  cityUpdate.innerHTML = response.data.name;
+}
+
+//Toggle between celsius and fahrenheit link
+function displayCelsiusTemp(celsius) {
+  celsius.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  clickCelsius.classList.add("active");
+  clickFahrenheit.classList.remove("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemp);
+}
+let clickCelsius = document.querySelector("#celsius-link");
+clickCelsius.addEventListener("click", displayCelsiusTemp);
+
+function displayFahrenheitTemp(event) {
+  event.preventDefault();
+  let temperatureElement = document.querySelector("#temperature");
+  clickCelsius.classList.remove("active");
+  clickFahrenheit.classList.add("active");
+  temperatureElement.innerHTML = Math.round(celsiusTemp * (9 / 5) + 32);
+}
+let clickFahrenheit = document.querySelector("#fahrenheit-link");
+clickFahrenheit.addEventListener("click", displayFahrenheitTemp);
+//
+
+let celsiusTemp = null;
+
 let searchCountry = document.querySelector("#search-form");
 searchCountry.addEventListener("submit", submitCountry);
 
-//Get temperature at search location
-function getSearchTemp(response) {
-  let searchTemperature = Math.round(response.data.main.temp);
-  let temperatureElement = document.querySelector("#temperature");
-  temperatureElement.innerHTML = searchTemperature;
-  let cityUpdate = document.querySelector("#title-country");
-  cityUpdate.innerHTML = response.data.name;
-  //Toggle between celsius and fahrenheit (Search)
-  function toggleCelsius(celsius) {
-    celsius.preventDefault();
-    let tempCelsius = document.querySelector("#temperature");
-    tempCelsius.innerHTML = searchTemperature;
-  }
-  let clickCelsius = document.querySelector("#celsius");
-  clickCelsius.addEventListener("click", toggleCelsius);
-
-  function toggleFahrenheit(fahrenheit) {
-    fahrenheit.preventDefault();
-    let tempFahrenheit = document.querySelector("#temperature");
-    tempFahrenheit.innerHTML = searchTemperature * (9 / 5) + 32;
-  }
-  let clickFahrenheit = document.querySelector("#fahrenheit");
-  clickFahrenheit.addEventListener("click", toggleFahrenheit);
-}
-
 searchCity("Kiel");
-
-//Current location button
-function btnCurrentCords(response) {
-  let lat = response.coords.latitude;
-  let lon = response.coords.longitude;
-  let units = "metric";
-  let apiKey = "7bf3ba8d3f15df7b82b1c7bfba361d28";
-  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${apiKey}&units=${units}`;
-
-  function getCurrentLocationTemperature(temp) {
-    let currentTemperature = Math.round(temp.data.main.temp);
-    let currentTemperatureElement = document.querySelector("#temperature");
-    currentTemperatureElement.innerHTML = currentTemperature;
-    let currentLocation = document.querySelector("#title-country");
-    currentLocation.innerHTML = temp.data.name;
-    //Toggle between celsius and fahrenheit (coords)
-    function toggleCelsius(celsius) {
-      celsius.preventDefault();
-      let tempCelsius = document.querySelector("#temperature");
-      tempCelsius.innerHTML = currentTemperature;
-    }
-    let clickCelsius = document.querySelector("#celsius");
-    clickCelsius.addEventListener("click", toggleCelsius);
-
-    function toggleFahrenheit(fahrenheit) {
-      fahrenheit.preventDefault();
-      let tempFahrenheit = document.querySelector("#temperature");
-      tempFahrenheit.innerHTML = currentTemperature * (9 / 5) + 32;
-    }
-    let clickFahrenheit = document.querySelector("#fahrenheit");
-    clickFahrenheit.addEventListener("click", toggleFahrenheit);
-  }
-
-  axios.get(apiUrl).then(getCurrentLocationTemperature);
-}
-function getCurrentCoords(response) {
-  response.preventDefault();
-  navigator.geolocation.getCurrentPosition(btnCurrentCords);
-}
-let btnCurrentLocation = document.querySelector("#current-location");
-btnCurrentLocation.addEventListener("click", getCurrentCoords);

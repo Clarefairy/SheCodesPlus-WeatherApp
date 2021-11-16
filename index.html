@@ -28,9 +28,6 @@
           aria-label="Search"
         />
         <button class="btn btn-outline-primary" id="search-button" type="submit">🔍</button>
-        <button type="button" class="btn btn-outline-primary current-location" id="current-location">
-          Current location
-        </button>
       </form>
 
       <hr />
@@ -42,7 +39,9 @@
           <h5 class="card-subtitle mb-2 text-muted">Today ⛈</h5>
           <p class="card-text">
             <span class="temperature" id="temperature"></span>
-            <span class="units"><a href="#" id="celsius">°C</a>|<a href="#" id="fahrenheit">°F</a></span>
+            <span class="units"
+              ><a href="#" id="celsius-link" class="active">°C</a>|<a href="#" id="fahrenheit-link">°F</a></span
+            >
           </p>
           <p class="day-date">
             <strong><span id="day"></span></strong><br /><span id="date"></span>
