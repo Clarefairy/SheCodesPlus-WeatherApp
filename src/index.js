@@ -64,8 +64,11 @@ function submitCountry(country) {
 
 //Get temperature at search location
 function getSearchTemp(response) {
-  let temperatureElement = document.querySelector("#temperature");
   let cityUpdate = document.querySelector("#city-name");
+  let weatherDescriptionElement = document.querySelector("#weather-description");
+  let humidityElement = document.querySelector("#humidity");
+  let windSpeedElement = document.querySelector("#wind-speed");
+  let temperatureElement = document.querySelector("#temperature");
   let weatherIconElement = document.querySelector("#weather-icon");
 
   celsiusTemp = response.data.main.temp;
@@ -73,6 +76,9 @@ function getSearchTemp(response) {
   clickFahrenheit.classList.remove("active");
   temperatureElement.innerHTML = Math.round(celsiusTemp);
   cityUpdate.innerHTML = `${response.data.name}`;
+  weatherDescriptionElement.innerHTML = response.data.weather[0].description;
+  humidityElement.innerHTML = `${response.data.main.humidity}%`;
+  windSpeedElement.innerHTML = `${Math.round(response.data.wind.speed * 3.6)}km/h`;
   weatherIconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
   weatherIconElement.setAttribute("alt", response.data.weather[0].description);
 }

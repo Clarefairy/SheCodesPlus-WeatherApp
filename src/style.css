@@ -89,10 +89,16 @@ body {
   list-style: none;
 }
 
-/* .weather-info li strong {
+.weather-info .humidity,
+.wind-speed,
+.weather-description {
   color: #f65282;
-  font-weight: 400;
-} */
+  font-weight: 700;
+}
+
+.weather-info .weather-description:first-letter {
+  text-transform: capitalize;
+}
 
 .weather-info .temperature-container {
   margin-top: 10px;
