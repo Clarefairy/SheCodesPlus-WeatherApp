@@ -65,12 +65,16 @@ function submitCountry(country) {
 //Get temperature at search location
 function getSearchTemp(response) {
   let temperatureElement = document.querySelector("#temperature");
+  let cityUpdate = document.querySelector("#city-name");
+  let weatherIconElement = document.querySelector("#weather-icon");
+
   celsiusTemp = response.data.main.temp;
   clickCelsius.classList.add("active");
   clickFahrenheit.classList.remove("active");
   temperatureElement.innerHTML = Math.round(celsiusTemp);
-  let cityUpdate = document.querySelector("#city-name");
   cityUpdate.innerHTML = `${response.data.name}`;
+  weatherIconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+  weatherIconElement.setAttribute("alt", response.data.weather[0].description);
 }
 
 //Toggle between celsius and fahrenheit link
