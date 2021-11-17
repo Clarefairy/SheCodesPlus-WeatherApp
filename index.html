@@ -18,44 +18,58 @@
   </head>
   <body>
     <div class="container">
-      <h1>Welcome!</h1>
-      <form class="d-flex search" id="search-form">
-        <input
-          class="form-control me-2 search"
-          id="location-input"
-          type="search"
-          placeholder="Search location"
-          aria-label="Search"
-        />
-        <button class="btn btn-outline-primary" id="search-button" type="submit">🔍</button>
-      </form>
+      <div class="weather-app">
+        <h1 class="header">Welcome!</h1>
+        <form id="search-form">
+          <div class="row">
+            <div class="col-9">
+              <input type="search" placeholder="Enter a city.." class="form-control search-input" id="search-input" />
+            </div>
+            <div class="col-3 p-0">
+              <input type="submit" class="btn btn-primary w-100" value="🔍" id="search-button" />
+            </div>
+          </div>
+        </form>
 
-      <hr />
-
-      <div class="card today">
-        <div class="card-body">
-          <h4 class="card-title">📍 <span id="title-country"></span></h4>
-          <br />
-          <h5 class="card-subtitle mb-2 text-muted">Today ⛈</h5>
-          <p class="card-text">
-            <span class="temperature" id="temperature"></span>
-            <span class="units"
-              ><a href="#" id="celsius-link" class="active">°C</a>|<a href="#" id="fahrenheit-link">°F</a></span
-            >
-          </p>
-          <p class="day-date">
-            <strong><span id="day"></span></strong><br /><span id="date"></span>
-            <br />
-            <span id="time"></span>
-          </p>
+        <div class="weather-info">
+          <div class="row">
+            <div class="col-6">
+              <span>
+                <span class="pindrop-emoji">📍</span>
+                <h1 class="city-name" id="city-name"></h1>
+              </span>
+              <ul>
+                <li>
+                  <span id="day"></span> <span id="time"></span>
+                  <br />
+                  <span id="date"></span>
+                </li>
+                <li>
+                  Humidity: <strong>68%</strong>, Wind:
+                  <strong>0.89km/h</strong>
+                </li>
+              </ul>
+            </div>
+            <div class="col-6">
+              <div class="temperature-container d-flex justify-content-end">
+                <canvas width="52" height="52"></canvas>
+                <div>
+                  <span class="temperature" id="temperature"></span>
+                  <span class="units"
+                    ><a href="#" id="celsius-link" class="active">°C</a>|<a href="#" id="fahrenheit-link">°F</a></span
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+        <br />
 
-      <br />
-      <p class="footer">
-        <a href="https://github.com/Clarefairy/SheCodesPlus-WeatherApp" target="_blank">Open-source code</a> by
-        Clarefairy
-      </p>
+        <p class="footer">
+          <a href="https://github.com/Clarefairy/SheCodesPlus-WeatherApp" target="_blank">Open-source code</a>
+          by Clarefairy
+        </p>
+      </div>
     </div>
     <script src="src/index.js"></script>
   </body>

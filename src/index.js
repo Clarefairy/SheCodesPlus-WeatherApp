@@ -3,7 +3,7 @@ let currentDate = new Date();
 let days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
 let dayIndex = currentDate.getDay();
 let currentDay = days[dayIndex];
-document.querySelector("#day").innerHTML = `${currentDay}`;
+document.querySelector("#day").innerHTML = `${currentDay},`;
 
 //Get current date
 function formatDate() {
@@ -58,7 +58,7 @@ function searchCity(city) {
 //Get search location
 function submitCountry(country) {
   country.preventDefault();
-  let city = document.querySelector("#location-input").value;
+  let city = document.querySelector("#search-input").value;
   searchCity(city);
 }
 
@@ -69,8 +69,8 @@ function getSearchTemp(response) {
   clickCelsius.classList.add("active");
   clickFahrenheit.classList.remove("active");
   temperatureElement.innerHTML = Math.round(celsiusTemp);
-  let cityUpdate = document.querySelector("#title-country");
-  cityUpdate.innerHTML = response.data.name;
+  let cityUpdate = document.querySelector("#city-name");
+  cityUpdate.innerHTML = `${response.data.name}`;
 }
 
 //Toggle between celsius and fahrenheit link
