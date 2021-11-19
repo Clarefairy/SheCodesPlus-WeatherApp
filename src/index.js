@@ -86,19 +86,21 @@ function getSearchTemp(response) {
 }
 //Display daily forecast temperatures
 function displayForecast(response) {
-  let forecast = response.data.daily;
+  forecast = response.data.daily;
   let forecastElement = document.querySelector("#weather-forecast");
   let forecastHTML = `<div class = "row">`;
   forecast.forEach(function (forecastDay, index) {
     if (0 < index && index < 7) {
-      forecastCelsiusMin = forecastDay.temp.min;
-      forecastCelsiusMax = forecastDay.temp.max;
+      let forecastCelsiusMin = forecastDay.temp.min;
+      let forecastCelsiusMax = forecastDay.temp.max;
       forecastHTML =
         forecastHTML +
         ` <div class="col-2 daily-forecast">
             <div class="weather-forecast-preview">
               <div class="forecast-day">${formatDay(forecastDay.dt)}</div>
-              <image class="icon" src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" >
+              <image class="icon" src="https://openweathermap.org/img/wn/${forecastDay.weather[0].icon}@2x.png" alt="${
+          forecastDay.weather[0].description
+        }" >
               <div class="forecast-temperature">
                 <span class="forecast-temperature-max" id ="forecast-temperature-max">${Math.round(
                   forecastCelsiusMax
@@ -113,6 +115,7 @@ function displayForecast(response) {
   });
   forecastHTML = forecastHTML + `</div>`;
   forecastElement.innerHTML = forecastHTML;
+  console.log(forecast);
 }
 
 //Forecast days
@@ -141,13 +144,8 @@ function displayCelsiusTemp(celsius) {
   let tempMaxElements = document.querySelectorAll("#forecast-temperature-max");
   let tempMinElements = document.querySelectorAll("#forecast-temperature-min");
   for (let i = 0; i < 6; i++) {
-    maxCelsius = Math.round((Number(tempMaxElements[i].innerHTML) - 32) * (5 / 9));
-    let maxCelsiusElement = document.querySelectorAll("#forecast-temperature-max");
-    maxCelsiusElement[i].innerHTML = maxCelsius;
-
-    minCelsius = Math.round((Number(tempMinElements[i].innerHTML) - 32) * (5 / 9));
-    let minCelsiusElement = document.querySelectorAll("#forecast-temperature-min");
-    minCelsiusElement[i].innerHTML = minCelsius;
+    tempMaxElements[i].innerHTML = Math.round(forecast[i].temp.max);
+    tempMinElements[i].innerHTML = Math.round(forecast[i].temp.min);
   }
 }
 
@@ -164,13 +162,10 @@ function displayFahrenheitTemp(event) {
   let tempMaxElements = document.querySelectorAll("#forecast-temperature-max");
   let tempMinElements = document.querySelectorAll("#forecast-temperature-min");
   for (let i = 0; i < 6; i++) {
-    maxFahrenheit = Math.round(Number(tempMaxElements[i].innerHTML) * (9 / 5) + 32);
-    let maxFahrenheitElement = document.querySelectorAll("#forecast-temperature-max");
-    maxFahrenheitElement[i].innerHTML = maxFahrenheit;
-
-    minFahrenheit = Math.round(Number(tempMinElements[i].innerHTML) * (9 / 5) + 32);
-    let mixFahrenheitElement = document.querySelectorAll("#forecast-temperature-min");
-    mixFahrenheitElement[i].innerHTML = minFahrenheit;
+    let maxFahrenheit = Math.round(forecast[i].temp.max * (9 / 5) + 32);
+    tempMaxElements[i].innerHTML = maxFahrenheit;
+    let minFahrenheit = Math.round(forecast[i].temp.max * (9 / 5) + 32);
+    tempMinElements[i].innerHTML = minFahrenheit;
   }
 }
 let clickFahrenheit = document.querySelector("#fahrenheit-link");
@@ -178,6 +173,7 @@ clickFahrenheit.addEventListener("click", displayFahrenheitTemp);
 //
 
 let celsiusTemp = null;
+let forecast = null;
 
 let searchCountry = document.querySelector("#search-form");
 searchCountry.addEventListener("submit", submitCountry);
