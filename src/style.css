@@ -1,6 +1,6 @@
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: "Cutive Mono", monospace;
   background: #faedf0;
 }
 
@@ -18,14 +18,6 @@ body {
   padding: 40px;
 }
 
-.weather-app .header {
-  color: #212a2e;
-  font-size: 38px;
-  font-weight: 700;
-  line-height: 1.5;
-  text-align: left;
-}
-
 .weather-app .pindrop-emoji {
   color: #212a2e;
   font-size: 32px;
@@ -33,6 +25,7 @@ body {
 }
 
 .weather-app .city-name {
+  font-family: "Cutive Mono", monospace;
   display: inline;
   color: #212a2e;
   font-size: 38px;
@@ -42,7 +35,7 @@ body {
 }
 
 .weather-app form {
-  margin-top: 30px;
+  margin-top: 10px;
   border-bottom: 1px solid #f9f7fe;
   padding-bottom: 25px;
 }
@@ -118,7 +111,7 @@ body {
   line-height: 36px;
   font-weight: 400;
   position: relative;
-  top: -40px;
+  top: -34px;
   text-decoration: none;
 }
 
