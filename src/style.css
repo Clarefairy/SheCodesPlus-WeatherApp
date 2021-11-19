@@ -171,11 +171,14 @@ body {
 .weather-forecast .forecast-temperature {
   font-style: normal;
   font-size: 18px;
-
   color: #f65282;
   font-weight: 700;
 }
 .weather-forecast .forecast-temperature-min {
   margin-left: 20px;
+  opacity: 0.6;
+}
+
+.weather-forecast .forecast-temperature-min-unit {
   opacity: 0.6;
 }
